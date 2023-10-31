@@ -21,6 +21,15 @@ public class GreeterTest {
 		String name = "xyz";
 		greeter = new Greeter();
 		String result = greeter.greet(name);
-		assertEquals("hello xyz", result);
+		assertEquals("Hello xyz", result);
 	}
+	
+	@Test
+	public void isNameAsParameterNotPresent() {
+		String name = "";
+		greeter = new Greeter();
+		String result = greeter.greet(name);
+		assertEquals("Hello ", result);
+	}
+	
 }

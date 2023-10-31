@@ -7,7 +7,10 @@ public class Greeter {
 	}
 
 	public String greet(String name) {
-		return "hello "+name;
+		if (name.isEmpty()) {
+			return "Hello " + name;
+		}
+		return "Hello "+name;
 	}
 
 }
