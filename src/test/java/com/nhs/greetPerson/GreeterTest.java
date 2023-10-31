@@ -16,4 +16,10 @@ public class GreeterTest {
 		String result = "Hello xyz";
 		assertEquals("Hello xyz", result);
 	}
+	@Test
+	public void isMethodPresent() {
+		greeter = new Greeter();
+		String result = greeter.greet();
+		assertEquals("hello xyz", result);
+	}
 }
