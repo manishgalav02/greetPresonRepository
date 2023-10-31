@@ -1,5 +1,7 @@
 package com.nhs.greetPerson;
 
+import java.util.Optional;
+
 public class Greeter {
 
 	public static void main(String[] args) {
@@ -7,10 +9,10 @@ public class Greeter {
 	}
 
 	public String greet(String name) {
-		if (name.isEmpty()) {
-			return "Hello " ;
-		}
-		return "Hello "+name.trim();
+		
+		return Optional.ofNullable(name).isPresent()
+				? name.isEmpty() ? "Hello " : "Hello "+Character.toUpperCase(name.charAt(0)) + name.substring(1).trim()
+				: "Hello ";
 	}
 
 }
