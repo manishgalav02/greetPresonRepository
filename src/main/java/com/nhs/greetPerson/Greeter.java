@@ -8,9 +8,9 @@ public class Greeter {
 
 	public String greet(String name) {
 		if (name.isEmpty()) {
-			return "Hello " + name;
+			return "Hello " ;
 		}
-		return "Hello "+name;
+		return "Hello "+name.trim();
 	}
 
 }

@@ -32,4 +32,12 @@ public class GreeterTest {
 		assertEquals("Hello ", result);
 	}
 	
+	@Test
+	public void isNamePresentWithSpace_TrimResult() {
+		String name = "xyz  ";
+		greeter = new Greeter();
+		String result = greeter.greet(name);
+		assertEquals("Hello xyz", result);
+	}
+	
 }
