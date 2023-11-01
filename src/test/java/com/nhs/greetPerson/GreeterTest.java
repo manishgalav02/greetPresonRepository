@@ -182,6 +182,32 @@ public class GreeterTest {
 		assertEquals(expectedGreeting, result);
 		logger.info("end of execution for testcase testGreetMorningCases_beforeEleven.");
 	}
+	
+	@Test
+	void testGreetMorningEdgeCases_JustafterTwelve() {
+		logger.info("start executing testGreetMorningEdgeCases_JustafterTwelve Testcase.");
+		String name = "xyz";
+		// exactly 12:01
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T12:01:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		String expectedGreeting = "Good afternoon Xyz";
+		assertEquals(expectedGreeting, result);
+	}
+	
+	@Test
+	void testGreetMorningEdgeCases_JustBeforeSix() {
+		logger.info("start executing testGreetMorningEdgeCases_JustBeforeSix Testcase.");
+		String name = "xyz";
+		// exactly 05:59
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T05:59:59.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		String expectedGreeting = "Good night Xyz";
+		assertEquals(expectedGreeting, result);
+	}
 
 	@Test
 	public void testGreetEveningCases_exactlyEighteen() {
