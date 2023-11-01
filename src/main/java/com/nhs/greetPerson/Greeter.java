@@ -28,16 +28,15 @@ public class Greeter {
 		logger.info("start executing greet method");
 		LocalTime currentTime = LocalTime.now(clock);
 		logger.info("Current Hour: " + currentTime);
-		
 
-		String sanitizedName= Optional.ofNullable(name).isPresent() ? name.isEmpty() ? ""
-				: "" + Character.toUpperCase(name.charAt(0)) + name.substring(1).trim() : "";
-		
-		if (sanitizedName.equals("")){
-			return HELLO+sanitizedName;
-			}
-		
-		
+		String sanitizedName = Optional.ofNullable(name).isPresent()
+				? name.isEmpty() ? "" : "" + Character.toUpperCase(name.charAt(0)) + name.substring(1).trim()
+				: "";
+
+		if (sanitizedName.equals("")) {
+			return HELLO + sanitizedName;
+		}
+
 		if (currentTime.isAfter(LocalTime.of(6, 0)) && currentTime.isBefore(LocalTime.of(12, 0))) {
 			logger.info("Calling greet at morning");
 			return "Good morning " + sanitizedName;
@@ -47,7 +46,7 @@ public class Greeter {
 		} else if (currentTime.equals(LocalTime.of(6, 0))) {
 			logger.info("Calling greet at morning");
 			return "Good morning " + sanitizedName;
-		}else if (currentTime.isAfter(LocalTime.of(18, 0)) && currentTime.isBefore(LocalTime.of(22, 0))) {
+		} else if (currentTime.isAfter(LocalTime.of(18, 0)) && currentTime.isBefore(LocalTime.of(22, 0))) {
 			logger.info("Calling greet at evening");
 			return "Good evening " + sanitizedName;
 		} else if (currentTime.equals(LocalTime.of(22, 0))) {
@@ -56,6 +55,9 @@ public class Greeter {
 		} else if (currentTime.equals(LocalTime.of(18, 0))) {
 			logger.info("Calling greet at evening");
 			return "Good evening " + sanitizedName;
+		} else if (currentTime.isAfter(LocalTime.of(22, 0)) || currentTime.isBefore(LocalTime.of(6, 0))) {
+			logger.info("Calling greet at night");
+			return "Good night " + sanitizedName;
 		} else {
 			logger.info("Calling greet at Afternoon");
 			return "Good afternoon " + sanitizedName;

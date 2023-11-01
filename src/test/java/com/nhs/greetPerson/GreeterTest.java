@@ -224,4 +224,75 @@ public class GreeterTest {
 
 	}
 
+	@Test
+	public void testGreetNightCases_Midnight() {
+		logger.info("start testGreetNightCases_Midnight Testcase.");
+		// midnight 00:00
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T00:00:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good night Xyz", result);
+		logger.info("end of execution for testcase testGreetNightCases_Midnight.");
+
+	}
+
+	@Test
+	public void testGreetNightCases_BeforeSix() {
+		logger.info("start testGreetNightCases_BeforeSix Testcase.");
+		// before 06:00
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T05:00:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good night Xyz", result);
+		logger.info("end of execution for testcase testGreetNightCases_BeforeSix.");
+
+	}
+
+	@Test
+	public void testGreetNightCases_AfterTwentytwo() {
+		logger.info("start testGreetNightCases_AfterTwentytwo Testcase.");
+		// after 22:00
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T22:02:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good night Xyz", result);
+		logger.info("end of execution for testcase testGreetNightCases_AfterTwentytwo.");
+
+	}
+	
+	@Test
+	public void testGreeting_outerToGivenRange() {
+		logger.info("start testGreeting_outerToGivenRange Testcase.");
+		// after 15:00
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T15:02:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good afternoon Xyz", result);
+		logger.info("end of execution for testcase testGreeting_outerToGivenRange.");
+
+	}
+	
+	@Test
+	public void testGreeting_outerToGivenRange_beforeEighteen() {
+		logger.info("start testGreeting_outerToGivenRange_beforeEighteen Testcase.");
+		// before 17:59
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T17:59:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good afternoon Xyz", result);
+		logger.info("end of execution for testcase testGreeting_outerToGivenRange_beforeEighteen.");
+
+	}
+
+
 }
