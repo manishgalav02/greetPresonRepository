@@ -40,19 +40,13 @@ public class Greeter {
 		if (currentTime.isAfter(LocalTime.of(6, 0)) && currentTime.isBefore(LocalTime.of(12, 0))) {
 			logger.info("Calling greet at morning");
 			return "Good morning " + sanitizedName;
-		} else if (currentTime.equals(LocalTime.of(12, 0))) {
-			logger.info("Calling greet at morning");
-			return "Good morning " + sanitizedName;
-		} else if (currentTime.equals(LocalTime.of(6, 0))) {
+		} else if (currentTime.equals(LocalTime.of(12, 0)) || currentTime.equals(LocalTime.of(6, 0))) {
 			logger.info("Calling greet at morning");
 			return "Good morning " + sanitizedName;
 		} else if (currentTime.isAfter(LocalTime.of(18, 0)) && currentTime.isBefore(LocalTime.of(22, 0))) {
 			logger.info("Calling greet at evening");
 			return "Good evening " + sanitizedName;
-		} else if (currentTime.equals(LocalTime.of(22, 0))) {
-			logger.info("Calling greet at evening");
-			return "Good evening " + sanitizedName;
-		} else if (currentTime.equals(LocalTime.of(18, 0))) {
+		} else if (currentTime.equals(LocalTime.of(22, 0)) || currentTime.equals(LocalTime.of(18, 0))) {
 			logger.info("Calling greet at evening");
 			return "Good evening " + sanitizedName;
 		} else if (currentTime.isAfter(LocalTime.of(22, 0)) || currentTime.isBefore(LocalTime.of(6, 0))) {
