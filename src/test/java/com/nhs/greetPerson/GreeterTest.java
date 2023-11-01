@@ -182,7 +182,7 @@ public class GreeterTest {
 		assertEquals(expectedGreeting, result);
 		logger.info("end of execution for testcase testGreetMorningCases_beforeEleven.");
 	}
-	
+
 	@Test
 	void testGreetMorningEdgeCases_JustafterTwelve() {
 		logger.info("start executing testGreetMorningEdgeCases_JustafterTwelve Testcase.");
@@ -195,7 +195,7 @@ public class GreeterTest {
 		String expectedGreeting = "Good afternoon Xyz";
 		assertEquals(expectedGreeting, result);
 	}
-	
+
 	@Test
 	void testGreetMorningEdgeCases_JustBeforeSix() {
 		logger.info("start executing testGreetMorningEdgeCases_JustBeforeSix Testcase.");
@@ -251,6 +251,20 @@ public class GreeterTest {
 	}
 
 	@Test
+	public void testGreetEveningEdgeCases_Aftertweentytwo() {
+		logger.info("start testGreetEveningEdgeCases_Aftertweentytwo Testcase.");
+		// After 22:00
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T22:01:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good night Xyz", result);
+		logger.info("end of execution for testcase testGreetEveningEdgeCases_Aftertweentytwo.");
+
+	}
+
+	@Test
 	public void testGreetNightCases_Midnight() {
 		logger.info("start testGreetNightCases_Midnight Testcase.");
 		// midnight 00:00
@@ -291,7 +305,7 @@ public class GreeterTest {
 		logger.info("end of execution for testcase testGreetNightCases_AfterTwentytwo.");
 
 	}
-	
+
 	@Test
 	public void testGreeting_outerToGivenRange() {
 		logger.info("start testGreeting_outerToGivenRange Testcase.");
@@ -305,7 +319,7 @@ public class GreeterTest {
 		logger.info("end of execution for testcase testGreeting_outerToGivenRange.");
 
 	}
-	
+
 	@Test
 	public void testGreeting_outerToGivenRange_beforeEighteen() {
 		logger.info("start testGreeting_outerToGivenRange_beforeEighteen Testcase.");
@@ -319,6 +333,5 @@ public class GreeterTest {
 		logger.info("end of execution for testcase testGreeting_outerToGivenRange_beforeEighteen.");
 
 	}
-
 
 }
