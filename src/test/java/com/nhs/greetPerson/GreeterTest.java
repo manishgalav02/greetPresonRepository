@@ -113,7 +113,7 @@ public class GreeterTest {
 		assertEquals("Good morning X", result);
 		logger.info("end of execution for testcase toCheck_capitalizeFirstLetter_SingleChar.");
 	}
-	
+
 	@Test
 	void testGreetMorningCases_exactlySix() {
 		logger.info("start executing testGreetMorningCases_exactlySix Testcase.");
@@ -124,6 +124,7 @@ public class GreeterTest {
 		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
 		String expectedGreeting = "Good morning Xyz";
 		assertEquals(expectedGreeting, result);
+		logger.info("end of execution for testcase testGreetMorningCases_exactlySix.");
 	}
 
 	@Test
@@ -137,6 +138,7 @@ public class GreeterTest {
 		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
 		String expectedGreeting = "Good morning Xyz";
 		assertEquals(expectedGreeting, result);
+		logger.info("end of execution for testcase testGreetMorningCases_AfterSix.");
 	}
 
 	@Test
@@ -150,6 +152,7 @@ public class GreeterTest {
 		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
 		String expectedGreeting = "Good morning Xyz";
 		assertEquals(expectedGreeting, result);
+		logger.info("end of execution for testcase testGreetMorningCases_exactlyTwelve.");
 	}
 
 	@Test
@@ -163,6 +166,7 @@ public class GreeterTest {
 		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
 		String expectedGreeting = "Good morning Xyz";
 		assertEquals(expectedGreeting, result);
+		logger.info("end of execution for testcase testGreetMorningCases_beforeTwelve.");
 	}
 
 	@Test
@@ -176,6 +180,48 @@ public class GreeterTest {
 		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
 		String expectedGreeting = "Good morning Xyz";
 		assertEquals(expectedGreeting, result);
+		logger.info("end of execution for testcase testGreetMorningCases_beforeEleven.");
+	}
+
+	@Test
+	public void testGreetEveningCases_exactlyEighteen() {
+		logger.info("start testGreetEveningCases_exactlyEighteen Testcase.");
+		// At exactly 18:00 (6:00 PM)
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T18:00:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good evening Xyz", result);
+		logger.info("end of execution for testcase testGreetEveningCases_exactlyEighteen.");
+
+	}
+
+	@Test
+	public void testGreetEveningCases_exactlyTwentytwo() {
+		logger.info("start testGreetEveningCases_exactlyTwentytwo Testcase.");
+		// At exactly 22:00 (10:00 PM)
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T22:00:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good evening Xyz", result);
+		logger.info("end of execution for testcase testGreetEveningCases_exactlyTwentytwo.");
+	}
+
+	@Test
+	public void testGreetEveningCases_Beforetweentytwo() {
+		logger.info("start testGreetEveningCases_Beforetweentytwo Testcase.");
+		// in between 18:00 to 22:00
+		String name = "xyz";
+		Clock fixedClock = Clock.fixed(Instant.parse("2018-04-29T21:58:00.00Z"), ZoneId.of("UTC"));
+		greeter = new Greeter(fixedClock);
+		String result = greeter.greet(name);
+		logger.log(Level.INFO, "TestCase Actual Result is: {0}", result);
+		assertEquals("Good evening Xyz", result);
+		logger.info("end of execution for testcase testGreetEveningCases_Beforetweentytwo.");
+
 	}
 
 }
